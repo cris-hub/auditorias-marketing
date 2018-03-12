@@ -1,0 +1,267 @@
+<ion-header >
+
+  <ion-navbar color="dark">
+    <ion-title>{{ 'Crear nuevo projecto ' | translate }}</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">
+        <span color="primary" showWhen="ios,android,windows">
+          {{ 'CANCEL_BUTTON' | translate }}
+        </span>
+        <ion-icon name="md-close" color="danger" showWhen="core,ios,android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
+        <span color="primary" showWhen="ios">
+          {{ 'DONE_BUTTON' | translate }}
+        </span>
+        <ion-icon name="md-checkmark" color="secondary" showWhen="core,android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-bounce>
+ 
+    
+      
+ <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
+        
+        
+        <ion-slides pager >
+          
+          <ion-slide> 
+            <ion-list-header text-left>Datos Basicos</ion-list-header>
+            <ion-row>
+              <ion-col col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12>
+                <ion-item>
+                  <ion-label color="dark" floating>Entidad</ion-label>
+                  <ion-input tabindex="1" type="text" formControlName="entidad"></ion-input>
+                </ion-item>
+              </ion-col> 
+                <ion-col col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12>
+                  <ion-item>
+                    <ion-label color="dark" floating>Codigo</ion-label>
+                    <ion-input tabindex="2" type="text" formControlName="codigoEntidad"></ion-input>
+                  </ion-item>
+                </ion-col>
+            </ion-row>
+
+
+
+
+          <ion-row>
+             <ion-col offset-xl-6 offset-lg-6 col-md-6 col-sm-12 col-12>
+              <ion-item>
+                <ion-label floating color="dark">{{ 'Tipo entidad' | translate }}</ion-label>
+                <ion-select tabindex="3" formControlName="tipoEntidad">
+                  <ion-option value="1" checked="true">Privada</ion-option>
+                  <ion-option value="2">¨Publica</ion-option>
+                  <ion-option value="3">Mixta</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+                
+
+
+
+
+  <ion-item-divider text-left>
+  Ubicacion Entidad
+  </ion-item-divider>
+
+
+
+              <ion-row>
+                <ion-col col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12>
+                  <ion-item>
+                    <ion-label floating color="dark">{{ 'Pais' | translate }}</ion-label>
+                    <ion-select tabindex="4" formControlName="pais">
+                      <ion-option value="1" checked="true">Colombia</ion-option>
+                      <ion-option value="2">España</ion-option>
+                      <ion-option value="3">Venezuela</ion-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12>
+                      <ion-item>
+                        <ion-label floating color="dark">{{ 'Ciudad' | translate }}</ion-label>
+                        <ion-select tabindex="5" formControlName="ciudad">
+                          <ion-option value="1" checked="true">Bogotá</ion-option>
+                          <ion-option value="2">Medellín</ion-option>
+                          <ion-option value="3">Cali</ion-option>
+                        </ion-select>
+                      </ion-item>
+                </ion-col>
+             
+              </ion-row>
+
+              <ion-row>
+               <ion-col offset-xl-6 offset-lg-6 col-md-6 col-sm-12 col-12>
+                  <ion-item>
+                    <ion-label color="dark" floating>Dirección</ion-label>
+                    <ion-input tabindex="6" type="text" formControlName="direccion"></ion-input>
+                  </ion-item>
+                </ion-col> 
+              </ion-row>
+
+
+             
+          </ion-slide>
+
+
+
+          <ion-slide>
+
+<ion-list>
+
+
+  <ion-list-header text-left>  Informacion representante legal </ion-list-header>
+           
+            <ion-row>
+               <ion-col col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12>
+                    <ion-item>
+                           <ion-label color="dark" floating>Nombre</ion-label>
+                          <ion-input tabindex="7" type="text" formControlName="representanteLegal"></ion-input>
+                    </ion-item>
+                </ion-col>
+             </ion-row>
+
+               <ion-row>
+                <ion-col>
+                  <ion-item col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12>
+                     <ion-label color="dark" floating>Télefono</ion-label>
+                    <ion-input type="text" formControlName="telefono"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+       
+
+              <ion-row>
+                <ion-col>
+                  <ion-item col-xl-6 col-lg-6 col-md-4 col-sm-12 col-12>
+                     <ion-label color="dark" floating>Cargo</ion-label>
+                    <ion-input type="text" formControlName="cargo"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+
+
+
+
+
+       <ion-buttons end>
+          <ion-item>
+            Contactos
+            <button ion-button clear icon-right>
+              <ion-icon name="add"></ion-icon>
+            </button>
+
+            <button ion-button outline round>
+              1
+            </button>
+
+         </ion-item>
+             
+      </ion-buttons>
+
+</ion-list>
+          </ion-slide>
+
+
+<ion-slide>
+
+
+<ion-list-header text-left>
+  Informacion de contrato
+</ion-list-header>
+
+  <ion-row>
+  <ion-col>
+    <ion-item col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12>
+       <ion-label  floating>Numero contrato</ion-label>
+      <ion-input type="text" formControlName="numeroContrato"></ion-input>
+    </ion-item>
+  </ion-col>
+
+   <ion-col>
+    <ion-item offset-xl-6 offset-lg-6 offset-md-6 col-sm-12 col-12>
+       <ion-label  stacked>Adjuntar contrato
+<ion-icon name="attach"></ion-icon>
+       </ion-label>
+      <ion-input type="file" formControlName="fileContrato">
+        
+      </ion-input>
+    </ion-item>
+  </ion-col>
+  </ion-row>
+
+<ion-list>
+
+
+  <ion-list-header text-left>  Tiempos proyecto </ion-list-header>
+  <ion-row>
+  <ion-col>
+<ion-item>
+  <ion-label floating>Fecha contrato</ion-label>
+  <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>
+</ion-item>  
+  </ion-col>
+
+  <ion-col>
+  
+    <ion-label stacked>duracion</ion-label>
+    <ion-range min="0" color="secondary">
+      <ion-label range-left>0</ion-label>
+      
+    </ion-range>
+  
+  </ion-col>
+
+
+  </ion-row>
+</ion-list>
+
+
+ 
+<ion-list radio-group >
+
+   <ion-list-header>
+  Pago anticipado
+  </ion-list-header>    
+
+  <ion-item>
+    <ion-label>Si</ion-label>
+    <ion-radio value="1" checked></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>No</ion-label>
+    <ion-radio value="2"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Aprobado sin anticipo</ion-label>
+    <ion-radio value="3" ></ion-radio>
+  </ion-item>
+</ion-list>
+
+
+
+</ion-slide>
+
+
+
+        </ion-slides>
+
+      
+
+        
+  </form>
+      
+      
+    
+</ion-content>
+
+
